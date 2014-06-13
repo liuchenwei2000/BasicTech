@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<books>
+    <book>
+        <name id="001">Thinking in Java</name>
+        <author>Eckl Bruce</author>
+    </book>
+    <book>
+        <name id="002">XML Cookbook</name>
+        <author>Unknown</author>
+    </book>
+</books>
