@@ -1,9 +1,9 @@
 /**
  * 
  */
-package v1;
+package dp.v1;
 
-import common.IFactory;
+import dp.IFactory;
 
 /**
  * IFactory实例的代理类

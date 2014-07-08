@@ -1,7 +1,7 @@
 /**
  * 
  */
-package common;
+package dp;
 
 /**
  * 接口2实现类示例
@@ -14,6 +14,11 @@ public class FactoryImpl implements IFactory {
 
 	public String create() {
 		System.out.println("in FactoryImpl.create()");
+		try {
+			Thread.sleep(200);
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
 		return "FactoryImpl";
 	}
 }

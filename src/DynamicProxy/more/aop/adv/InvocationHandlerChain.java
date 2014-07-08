@@ -1,10 +1,13 @@
 /**
  * 
  */
-package v2;
+package more.aop.adv;
 
 import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.Method;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
 
 /**
  * 与动态代理对应的调用处理器示例
@@ -15,13 +18,15 @@ import java.lang.reflect.Method;
  * 
  * 创建日期：2014-7-8
  */
-public class MyInvocationHandler implements InvocationHandler {
+public class InvocationHandlerChain implements InvocationHandler {
 
+	private List<MethodInterceptor> interceptors;
 	// 具体实现类实例
 	private Object target;
 	
-	public MyInvocationHandler(Object target) {
+	public InvocationHandlerChain(Object target) {
 		this.target = target;
+		this.interceptors = new ArrayList<MethodInterceptor>();
 	}
 
 	/**
@@ -31,10 +36,17 @@ public class MyInvocationHandler implements InvocationHandler {
 	 */
 	public Object invoke(Object proxy, Method method, Object[] args)
 			throws Throwable {
-		String methodInfo = target.getClass().getName() + "." + method.getName();
-		System.out.println("enter " + methodInfo);
+		for(MethodInterceptor interceptor : interceptors){
+			interceptor.beforeInvoking(target, method, args);
+		}
 		Object result = method.invoke(target, args);
-		System.out.println("leave " + methodInfo);
+		for(MethodInterceptor interceptor : interceptors){
+			interceptor.afterInvoking(target, method, args);
+		}
 		return result;
+	}
+	
+	public void register(MethodInterceptor interceptor){
+		interceptors.add(interceptor);
 	}
 }

@@ -1,12 +1,12 @@
 /**
  * 
  */
-package v1;
+package dp.v1;
 
-import common.FactoryImpl;
-import common.IFactory;
-import common.IService;
-import common.ServiceImpl;
+import dp.FactoryImpl;
+import dp.IFactory;
+import dp.IService;
+import dp.ServiceImpl;
 
 /**
  * 代理模式客户端使用示例

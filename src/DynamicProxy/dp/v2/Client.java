@@ -1,14 +1,14 @@
 /**
  * 
  */
-package v2;
+package dp.v2;
 
 import java.lang.reflect.Proxy;
 
-import common.FactoryImpl;
-import common.IFactory;
-import common.IService;
-import common.ServiceImpl;
+import dp.FactoryImpl;
+import dp.IFactory;
+import dp.IService;
+import dp.ServiceImpl;
 
 /**
  * 动态代理客户端使用示例

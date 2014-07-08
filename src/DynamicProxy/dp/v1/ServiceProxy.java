@@ -1,9 +1,9 @@
 /**
  * 
  */
-package v1;
+package dp.v1;
 
-import common.IService;
+import dp.IService;
 
 /**
  * IService实例的代理类
