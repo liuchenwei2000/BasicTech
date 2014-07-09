@@ -6,13 +6,13 @@ package more.aop.adv;
 import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.Method;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 /**
- * 与动态代理对应的调用处理器示例
+ * 拦截器链
  * <p>
- * 通常会把一个具体实现类的实例传给调用处理器，然后把具体业务的实现委派给这个对象去完成。
+ * 把多个拦截器串成一条链，在一个动态代理的InvocationHandler中拦截所有的方法调用，就可以挨个执行链上的拦截器。
+ * 这样一来，不管有多少基础设施服务需要提供，都可以应对自如。
  * 
  * @author 刘晨伟
  * 
@@ -20,6 +20,7 @@ import java.util.List;
  */
 public class InvocationHandlerChain implements InvocationHandler {
 
+	// 拦截器列表
 	private List<MethodInterceptor> interceptors;
 	// 具体实现类实例
 	private Object target;
@@ -29,16 +30,12 @@ public class InvocationHandlerChain implements InvocationHandler {
 		this.interceptors = new ArrayList<MethodInterceptor>();
 	}
 
-	/**
-	 * (non-Javadoc)
-	 * 
-	 * @see java.lang.reflect.InvocationHandler#invoke(java.lang.Object, java.lang.reflect.Method, java.lang.Object[])
-	 */
 	public Object invoke(Object proxy, Method method, Object[] args)
 			throws Throwable {
 		for(MethodInterceptor interceptor : interceptors){
 			interceptor.beforeInvoking(target, method, args);
 		}
+		// 执行方法调用
 		Object result = method.invoke(target, args);
 		for(MethodInterceptor interceptor : interceptors){
 			interceptor.afterInvoking(target, method, args);
@@ -46,6 +43,9 @@ public class InvocationHandlerChain implements InvocationHandler {
 		return result;
 	}
 	
+	/**
+	 * 注册拦截器
+	 */
 	public void register(MethodInterceptor interceptor){
 		interceptors.add(interceptor);
 	}

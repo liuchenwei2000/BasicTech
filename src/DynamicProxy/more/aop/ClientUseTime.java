@@ -9,12 +9,9 @@ import dp.FactoryImpl;
 import dp.IFactory;
 import dp.IService;
 import dp.ServiceImpl;
-import dp.v2.MyInvocationHandler;
 
 /**
- * 示例
- * <p>
- * 
+ * 统计每一个业务对象方法的调用时间
  * 
  * @author 刘晨伟
  * 
@@ -31,7 +28,7 @@ public class ClientUseTime {
 				new Class[] { IService.class }, new InvocationTimeHandler(new ServiceImpl()));
 		serviceProxy.operate("Hello");
 		System.out.println();
-		// 这里又利用 Proxy 和 MyInvocationHandler 创建了实现 IFactory 接口的代理类实例
+
 		IFactory factoryProxy = (IFactory) Proxy.newProxyInstance(
 				IFactory.class.getClassLoader(),
 				new Class[] { IFactory.class }, new InvocationTimeHandler(new FactoryImpl()));

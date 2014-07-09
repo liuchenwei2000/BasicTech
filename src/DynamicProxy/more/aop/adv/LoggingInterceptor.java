@@ -8,9 +8,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 /**
- * Ê¾Àý
- * <p>
- * 
+ * ÈÕÖ¾À¹½ØÆ÷
  * 
  * @author Áõ³¿Î°
  * 
@@ -18,15 +16,18 @@ import java.util.Date;
  */
 public class LoggingInterceptor implements MethodInterceptor{
 
-	private SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss.SSS");
-	
-	public void beforeInvoking(Object proxy, Method method, Object[] args){
+	private SimpleDateFormat formatter = new SimpleDateFormat(
+			"yyyy-MM-dd hh:mm:ss.SSS");
+
+	public void beforeInvoking(Object proxy, Method method, Object[] args) {
 		String methodInfo = proxy.getClass().getName() + "." + method.getName();
-		System.out.println(formatter.format(new Date()) + " enter " + methodInfo);
+		System.out.println(formatter.format(new Date()) + " enter "
+				+ methodInfo);
 	}
-	
-	public void afterInvoking(Object proxy, Method method, Object[] args){
+
+	public void afterInvoking(Object proxy, Method method, Object[] args) {
 		String methodInfo = proxy.getClass().getName() + "." + method.getName();
-		System.out.println(formatter.format(new Date()) + " leave " + methodInfo);
+		System.out.println(formatter.format(new Date()) + " leave "
+				+ methodInfo);
 	}
 }

@@ -7,9 +7,7 @@ import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.Method;
 
 /**
- * 与动态代理对应的调用处理器示例
- * <p>
- * 通常会把一个具体实现类的实例传给调用处理器，然后把具体业务的实现委派给这个对象去完成。
+ * 提供执行时间统计功能的InvocationHandler
  * 
  * @author 刘晨伟
  * 
@@ -24,11 +22,6 @@ public class InvocationTimeHandler implements InvocationHandler {
 		this.target = target;
 	}
 
-	/**
-	 * (non-Javadoc)
-	 * 
-	 * @see java.lang.reflect.InvocationHandler#invoke(java.lang.Object, java.lang.reflect.Method, java.lang.Object[])
-	 */
 	public Object invoke(Object proxy, Method method, Object[] args)
 			throws Throwable {
 		long start = System.currentTimeMillis();
