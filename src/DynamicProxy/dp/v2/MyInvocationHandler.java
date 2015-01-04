@@ -25,15 +25,18 @@ public class MyInvocationHandler implements InvocationHandler {
 	}
 
 	/**
-	 * (non-Javadoc)
+	 * 需要实现这个方法
 	 * 
 	 * @see java.lang.reflect.InvocationHandler#invoke(java.lang.Object, java.lang.reflect.Method, java.lang.Object[])
 	 */
 	public Object invoke(Object proxy, Method method, Object[] args)
 			throws Throwable {
+		// 方法执行前处理
 		String methodInfo = target.getClass().getName() + "." + method.getName();
 		System.out.println("enter " + methodInfo);
+		// 方法执行委托给具体实例
 		Object result = method.invoke(target, args);
+		// 方法执行后处理
 		System.out.println("leave " + methodInfo);
 		return result;
 	}

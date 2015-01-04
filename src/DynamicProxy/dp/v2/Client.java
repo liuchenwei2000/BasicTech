@@ -37,10 +37,15 @@ public class Client {
 				new Class[] { IService.class }, new MyInvocationHandler(new ServiceImpl()));
 		serviceProxy.operate("Hello");
 		System.out.println();
-		// 这里又利用 Proxy 和 MyInvocationHandler 创建了实现 IFactory 接口的代理类实例
-		IFactory factoryProxy = (IFactory) Proxy.newProxyInstance(
-				IFactory.class.getClassLoader(),
-				new Class[] { IFactory.class }, new MyInvocationHandler(new FactoryImpl()));
+		
+		// 也可以将创建代理对象的过程封装起来，其实现原理和上面是一样的。
+		IFactory factoryProxy = getProxy(new FactoryImpl());
 		System.out.println(factoryProxy.create());
+	}
+	
+	@SuppressWarnings("unchecked")
+	private static <T> T getProxy(T t) {
+		return (T) Proxy.newProxyInstance(t.getClass().getClassLoader(), t
+				.getClass().getInterfaces(), new MyInvocationHandler(t));
 	}
 }
