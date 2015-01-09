@@ -27,6 +27,7 @@ public class Client {
 		 * Proxy 类提供用于创建动态代理类和实例的静态方法。
 		 * <p>
 		 * 动态代理类是运行时创建的类，当它被创建的时候会实现指定的接口。
+		 * Proxy本身是利用静态的Proxy.newProxyInstance()方法在运行时动态地创建的。
 		 * <p>
 		 * newProxyInstance 方法返回一个指定接口的代理类实例，该接口可以将方法调用指派到指定的调用处理程序(InvocationHandler)。
 		 * 第二个参数可以是任何接口，第三个参数 MyInvocationHandle 可以接收任何接口的实例。
