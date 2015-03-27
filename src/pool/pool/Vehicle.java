@@ -4,7 +4,7 @@
 package pool;
 
 /**
- * 
+ * Æû³µ½Ó¿Ú
  * 
  * @author Áõ³¿Î°
  * 

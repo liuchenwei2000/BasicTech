@@ -14,9 +14,9 @@ import java.util.concurrent.locks.ReentrantLock;
  * <p>
  * 用来管理商品的供货和取货。
  * <p>
- * 相比synchronized方式，Lock方式能够完全解决生产者消费者问题。
+ * 相比 synchronized 方式，Lock 方式能够完全解决生产者消费者问题。
  * 既能保证生产者不会在存货满时加入数据，又能保证消费者不会在存货空时消耗数据。
- * 这全都因为Lock对象可以创建不止一个条件对象，而synchronized只有一个。
+ * 这全都因为 Lock 对象可以创建不止一个条件对象，而 synchronized 只有一个。
  * 
  * @author 刘晨伟
  * 

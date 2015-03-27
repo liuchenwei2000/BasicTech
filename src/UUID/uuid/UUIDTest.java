@@ -36,6 +36,7 @@ public class UUIDTest {
 	
 	/**
 	 * 使用Java UUID Generator(JCG)框架生成
+	 * <p>
 	 * 纯Java实现，开源LGPL协议，采用了Native的方式产生真正的UUID，而且提供了不同平台的实现。
 	 */
 	private static void generateByJUG() {

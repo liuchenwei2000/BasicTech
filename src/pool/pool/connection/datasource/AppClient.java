@@ -32,14 +32,23 @@ public class AppClient {
 		}
 		// 直接获取数据源对象，由它返回数据库连接
 		DataSource ds = DataSourceManager.getInstance().lookup("data source 1");
+		Connection con = null;
 		try {
-			Connection con = ds.getConnection();
+			con = ds.getConnection();
 			Statement st = con.createStatement();
 			ResultSet rs = st.executeQuery("select * from user");
 			System.out.println(rs);
-			con.close();
+			st.close();
 		} catch (SQLException e) {
 			e.printStackTrace();
+		} finally {
+			if (con != null) {
+				try {
+					con.close();
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
+			}
 		}
 	}
 }

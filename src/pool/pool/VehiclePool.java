@@ -8,7 +8,7 @@ import java.util.Map;
 import java.util.Set;
 
 /**
- * 
+ * 汽车池
  * 
  * @author 刘晨伟
  * 
@@ -30,6 +30,9 @@ public class VehiclePool {
 		map.put(new Car(5), State.FREE);
 	}
 
+	/**
+	 * 获取 Vehicle 对象
+	 */
 	public synchronized static Vehicle getVehicle() {
 		Set<Vehicle> keys = map.keySet();
 		for (Vehicle vehicle : keys) {
@@ -38,10 +41,12 @@ public class VehiclePool {
 				return vehicle;
 			}
 		}
-		throw new RuntimeException(
-				"All vehicle are in use.Please wait for a moment.");
+		throw new RuntimeException("All vehicle are in use.Please wait for a moment.");
 	}
 
+	/**
+	 * 归还 Vehicle 对象
+	 */
 	public synchronized static void giveBack(Vehicle vehicle) {
 		if (vehicle != null) {
 			map.put(vehicle, State.FREE);

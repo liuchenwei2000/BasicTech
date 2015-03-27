@@ -1,22 +1,22 @@
-DataSource简介
+												DataSource简介
 
-该工厂用于提供到此DataSource对象所表示的物理数据源的连接。
+DataSource 接口用于提供到此 DataSource 对象所表示的物理数据源的连接。
 
-作为DriverManager工具的替代项，DataSource对象是获取连接的首选方法。实现DataSource接口的对象通常在基于JNDI的命名服务中注册。 
+作为 DriverManager 工具的替代品，DataSource 对象是获取连接的首选方法。实现 DataSource 接口的对象通常在基于 JNDI 的命名服务中注册。 
 
-DataSource接口由驱动程序供应商实现。共有三种类型的实现： 
+DataSource 接口由驱动程序供应商实现。共有三种类型的实现： 
 
-基本实现：生成标准的Connection对象。
+1，基本实现：生成标准的Connection对象。
+2，连接池实现：生成自动参与连接池的 Connection 对象。此实现与中间层连接池管理器一起使用。
+3，分布式事务实现：生成一个Connection对象，该对象可用于分布式事务，大多数情况下总是参与连接池。
+此实现与中间层事务管理器一起使用，大多数情况下总是与连接池管理器一起使用。
 
-连接池实现：生成自动参与连接池的Connection对象。此实现与中间层连接池管理器一起使用。
+DataSource对象的属性在必要时可以修改。例如，如果将数据源移动到另一个服务器，则可更改与服务器相关的属性。
+其优点在于，由于可以更改数据源的属性，所以任何访问该数据源的代码都无需更改。 
 
-分布式事务实现：生成一个Connection对象，该对象可用于分布式事务，大多数情况下总是参与连接池。此实现与中间层事务管理器一起使用，大多数情况下总是与连接池管理器一起使用。
-
-DataSource对象的属性在必要时可以修改。例如，如果将数据源移动到另一个服务器，则可更改与服务器相关的属性。其优点在于，由于可以更改数据源的属性，所以任何访问该数据源的代码都无需更改。 
-
-通过DataSource对象访问的驱动程序本身不会向DriverManager注册。通过查找操作获取DataSource对象，然后使用该对象创建Connection对象。使用基本的实现，通过DataSource对象获取的连接与通过DriverManager设施获取的连接相同。
-
+通过DataSource对象访问的驱动程序本身不会向DriverManager注册。通过查找操作获取DataSource对象，然后使用该对象创建Connection对象。
+使用基本的实现，通过DataSource对象获取的连接与通过 DriverManager 设施获取的连接相同。
 
 JDBC类库也定义了两个DataSource的扩展，用来支持企业级应用，如下：
-1.ConnectionPoolDataSource：支持物理连接的缓存和重用，这样可以提高应用的性能和可伸缩性。
-2.XADataSource：提供可以使用在分布式事务中的连接。
+1，ConnectionPoolDataSource：支持物理连接的缓存和重用，这样可以提高应用的性能和可伸缩性。
+2，XADataSource：提供可以使用在分布式事务中的连接。

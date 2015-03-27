@@ -59,7 +59,8 @@ public class ConnectionPool {
 	
 	private Connection createDBConnection() {
 		try {
-			return DriverManager.getConnection(config.getUrl(), config.getUser(), config.getPassword());
+			return DriverManager.getConnection(config.getUrl(),
+					config.getUser(), config.getPassword());
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}

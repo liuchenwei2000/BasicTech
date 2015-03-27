@@ -40,21 +40,22 @@ public class Client {
 		Thread.sleep(200);
 		new Thread(new Task(), "Tim").start();
 	}
-
 }
+
 class Task implements Runnable {
 
 	@Override
 	public void run() {
+		String threadName = Thread.currentThread().getName();
 		Vehicle vehicle = VehiclePool.getVehicle();
-		System.out.println("¡¾" +Thread.currentThread().getName() + "¡¿ I want a vehicle.");
+		System.out.printf("¡¾%s¡¿ I want a vehicle.%n", threadName);
 		vehicle.move();
 		try {
 			Thread.sleep(1100);
 		} catch (InterruptedException e) {
 			e.printStackTrace();
 		}
-		System.out.println("¡¾" +Thread.currentThread().getName() + "¡¿I give back the vehicle.");
+		System.out.printf("¡¾%s¡¿I give back the vehicle.%n", threadName);
 		VehiclePool.giveBack(vehicle);
 	}
 }

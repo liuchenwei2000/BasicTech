@@ -34,9 +34,18 @@ public class AppClient {
 			Statement st = con.createStatement();
 			ResultSet rs = st.executeQuery("select * from user");
 			System.out.println(rs);
-			con.close();// 关闭连接，实际是将连接归还给池，但客户端并不知道此实现细节
+			st.close();
 		} catch (SQLException e) {
 			e.printStackTrace();
+		} finally {
+			if(con != null) {
+				try {
+					// 关闭连接，实际是将连接归还给池，但客户端并不知道此实现细节
+					con.close();
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
+			}
 		}
 	}
 }

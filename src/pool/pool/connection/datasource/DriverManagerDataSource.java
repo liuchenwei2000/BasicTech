@@ -37,14 +37,9 @@ public class DriverManagerDataSource implements DataSource {
 	/**
 	 * 获取一个数据库连接
 	 */
-	public Connection getConnection() {
-		try {
-			// 每次都返回一个新的数据库连接
-			return DriverManager.getConnection(this.dbUrl, this.user, this.password);
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
-		return null;
+	public Connection getConnection() throws SQLException {
+		// 每次都返回一个新的数据库连接
+		return DriverManager.getConnection(this.dbUrl, this.user, this.password);
 	}
 	
 	/**
@@ -52,12 +47,7 @@ public class DriverManagerDataSource implements DataSource {
 	 */
 	public Connection getConnection(String username, String password)
 			throws SQLException {
-		try {
-			return DriverManager.getConnection(dbUrl, username, password);
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
-		return null;
+		return DriverManager.getConnection(dbUrl, username, password);
 	}
 	
 	@Override

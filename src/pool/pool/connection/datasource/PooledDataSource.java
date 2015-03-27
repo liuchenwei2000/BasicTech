@@ -20,7 +20,7 @@ import pool.connection.PoolableConnection;
 /**
  * 连接池实现的DataSource
  * <p>
- * 实际上和 pool.connection.ConnectionPool是一样的。
+ * 实际上和 pool.connection.ConnectionPool 是一样的。
  * 
  * @author 刘晨伟
  * 
@@ -77,7 +77,7 @@ public class PooledDataSource implements DataSource {
 	/**
 	 * 获取一个数据库连接
 	 */
-	public synchronized Connection getConnection() {
+	public synchronized Connection getConnection() throws SQLException {
 		Connection con = findFreeConnection();
 		if (con == null) {
 			recycleTimeoutMandatorily();
@@ -169,8 +169,7 @@ public class PooledDataSource implements DataSource {
 	 */
 	
 	
-	public Connection getConnection(String username, String password)
-			throws SQLException {
+	public Connection getConnection(String username, String password) throws SQLException {
 		config.setUser(username);
 		config.setPassword(password);
 		return getConnection();

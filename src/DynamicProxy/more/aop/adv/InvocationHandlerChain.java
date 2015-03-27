@@ -49,4 +49,11 @@ public class InvocationHandlerChain implements InvocationHandler {
 	public void register(MethodInterceptor interceptor){
 		interceptors.add(interceptor);
 	}
+	
+	/**
+	 * ÒÆ³ýÀ¹½ØÆ÷
+	 */
+	public void remove(MethodInterceptor interceptor){
+		interceptors.remove(interceptor);
+	}
 }
