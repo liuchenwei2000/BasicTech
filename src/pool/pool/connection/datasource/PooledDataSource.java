@@ -7,10 +7,12 @@ import java.io.PrintWriter;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
+import java.sql.SQLFeatureNotSupportedException;
 import java.util.LinkedList;
 import java.util.ListIterator;
 import java.util.Timer;
 import java.util.TimerTask;
+import java.util.logging.Logger;
 
 import javax.sql.DataSource;
 
@@ -201,5 +203,10 @@ public class PooledDataSource implements DataSource {
 	@Override
 	public boolean isWrapperFor(Class<?> iface) throws SQLException {
 		return false;
+	}
+
+	@Override
+	public Logger getParentLogger() throws SQLFeatureNotSupportedException {
+		return null;
 	}
 }

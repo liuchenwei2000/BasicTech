@@ -20,6 +20,7 @@ import java.sql.Statement;
 import java.sql.Struct;
 import java.util.Map;
 import java.util.Properties;
+import java.util.concurrent.Executor;
 
 /**
  * 可缓存到池的数据库连接
@@ -296,5 +297,31 @@ public class PoolableConnection implements Connection {
 	public Struct createStruct(String typeName, Object[] attributes)
 			throws SQLException {
 		return realConnection.createStruct(typeName, attributes);
+	}
+
+	@Override
+	public void setSchema(String schema) throws SQLException {
+		realConnection.setSchema(schema);
+	}
+
+	@Override
+	public String getSchema() throws SQLException {
+		return realConnection.getSchema();
+	}
+
+	@Override
+	public void abort(Executor executor) throws SQLException {
+		realConnection.abort(executor);
+	}
+
+	@Override
+	public void setNetworkTimeout(Executor executor, int milliseconds)
+			throws SQLException {
+		realConnection.setNetworkTimeout(executor, milliseconds);
+	}
+
+	@Override
+	public int getNetworkTimeout() throws SQLException {
+		return realConnection.getNetworkTimeout();
 	}
 }
