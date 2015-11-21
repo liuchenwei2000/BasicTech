@@ -8,23 +8,23 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * Êı¾İ¿âÁ¬½Ó³Ø¹ÜÀíÆ÷
+ * æ•°æ®åº“è¿æ¥æ± ç®¡ç†å™¨
  * <p>
- * Ö÷ÒªÓ¦ÓÃÔÚÏµÍ³Ê¹ÓÃ¶àÊı¾İ¿âµÄ³¡¾°ÏÂ£¬¹ÜÀí¸÷¸öÁ¬½Ó³Ø¡£
- * Èç¹ûÊÇµ¥¸öÊı¾İ¿âµÄ»°£¬½ö½öÊ¹ÓÃÊı¾İ¿âÁ¬½Ó³Ø¾Í×ã¹»ÁË¡£
+ * ä¸»è¦åº”ç”¨åœ¨ç³»ç»Ÿä½¿ç”¨å¤šæ•°æ®åº“çš„åœºæ™¯ä¸‹ï¼Œç®¡ç†å„ä¸ªè¿æ¥æ± ã€‚
+ * å¦‚æœæ˜¯å•ä¸ªæ•°æ®åº“çš„è¯ï¼Œä»…ä»…ä½¿ç”¨æ•°æ®åº“è¿æ¥æ± å°±è¶³å¤Ÿäº†ã€‚
  * <p>
- * ±¾Àà¶ÔÏóÒ»°ã¶¼ÊÇµ¥Àı£¬ÔËĞĞÔÚJavaEEÓ¦ÓÃ·şÎñÆ÷ÖĞ£¬Í³Ò»¹ÜÀíÊı¾İ¿âÁ¬½Ó³Ø¡£
+ * æœ¬ç±»å¯¹è±¡ä¸€èˆ¬éƒ½æ˜¯å•ä¾‹ï¼Œè¿è¡Œåœ¨JavaEEåº”ç”¨æœåŠ¡å™¨ä¸­ï¼Œç»Ÿä¸€ç®¡ç†æ•°æ®åº“è¿æ¥æ± ã€‚
  * 
- * @author Áõ³¿Î°
+ * @author åˆ˜æ™¨ä¼Ÿ
  * 
- * ´´½¨ÈÕÆÚ£º2013-5-31
+ * åˆ›å»ºæ—¥æœŸï¼š2013-5-31
  */
 public class ConnectionPoolManager {
 
-	// µ¥Àı
+	// å•ä¾‹
 	private static final ConnectionPoolManager INSTANCE = new ConnectionPoolManager();
 
-	// Êı¾İÔ´_Êı¾İ¿âÁ¬½Ó³Ø_Map
+	// æ•°æ®æº_æ•°æ®åº“è¿æ¥æ± _Map
 	private Map<String, ConnectionPool> datasource_pool_map;
 
 	private ConnectionPoolManager() {
@@ -38,7 +38,7 @@ public class ConnectionPoolManager {
 
 	private void loadDrivers() {
 		try {
-			// ÕâÀï¿ÉÒÔ¸ù¾İĞèÒª£¬¼ÓÔØÊ¹ÓÃµ½µÄËùÓĞÊı¾İ¿âÇı¶¯
+			// è¿™é‡Œå¯ä»¥æ ¹æ®éœ€è¦ï¼ŒåŠ è½½ä½¿ç”¨åˆ°çš„æ‰€æœ‰æ•°æ®åº“é©±åŠ¨
 			Class.forName("com.mysql.jdbc.Driver");
 		} catch (ClassNotFoundException e) {
 			e.printStackTrace();
@@ -47,7 +47,7 @@ public class ConnectionPoolManager {
 
 	private void initDataSourcePoolMap() {
 		datasource_pool_map = new HashMap<String, ConnectionPool>();
-		// ÒÔÏÂĞÅÏ¢¶¼¿ÉÒÔÍ¨¹ıÅäÖÃÎÄ¼ş½øĞĞÅäÖÃ£¬±¾ÀıÅäÖÃÈı¸öÊı¾İÔ´
+		// ä»¥ä¸‹ä¿¡æ¯éƒ½å¯ä»¥é€šè¿‡é…ç½®æ–‡ä»¶è¿›è¡Œé…ç½®ï¼Œæœ¬ä¾‹é…ç½®ä¸‰ä¸ªæ•°æ®æº
 		datasource_pool_map.put("data source 1", new ConnectionPool(
 				new ConnectionPoolConfig("jdbc:mysql://localhost:3306/db1", "user1", "password1")));
 		datasource_pool_map.put("data source 2", new ConnectionPool(
@@ -61,10 +61,10 @@ public class ConnectionPoolManager {
 	}
 
 	/**
-	 * ·µ»ØÖ¸¶¨Êı¾İÔ´µÄÒ»¸öÁ¬½Ó
+	 * è¿”å›æŒ‡å®šæ•°æ®æºçš„ä¸€ä¸ªè¿æ¥
 	 * 
 	 * @param dataSource
-	 *            Êı¾İÔ´Ãû³Æ
+	 *            æ•°æ®æºåç§°
 	 */
 	public Connection getConnetion(String dataSource) {
 		ConnectionPool pool = datasource_pool_map.get(dataSource);

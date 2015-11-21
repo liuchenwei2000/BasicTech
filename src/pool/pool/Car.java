@@ -4,11 +4,11 @@
 package pool;
 
 /**
- * ½Î³µ
+ * è½¿è½¦
  * 
- * @author Áõ³¿Î°
+ * @author åˆ˜æ™¨ä¼Ÿ
  * 
- * ´´½¨ÈÕÆÚ£º2013-5-28
+ * åˆ›å»ºæ—¥æœŸï¼š2013-5-28
  */
 public class Car implements Vehicle {
 
@@ -17,7 +17,7 @@ public class Car implements Vehicle {
 	public Car(int id) {
 		this.id = id;
 		try {
-			// Ïß³ÌÍ£1s£¬´ú±í´´½¨¶ÔÏóÊÇ´ú¼Û¸ß°ºµÄ
+			// çº¿ç¨‹åœ1sï¼Œä»£è¡¨åˆ›å»ºå¯¹è±¡æ˜¯ä»£ä»·é«˜æ˜‚çš„
 			Thread.sleep(1000);
 		} catch (InterruptedException e) {
 			e.printStackTrace();

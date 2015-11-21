@@ -9,11 +9,11 @@ import java.sql.SQLException;
 import java.sql.Statement;
 
 /**
- * Ó¦ÓÃ¿Í»§¶Ë³ÌĞò
+ * åº”ç”¨å®¢æˆ·ç«¯ç¨‹åº
  * 
- * @author Áõ³¿Î°
+ * @author åˆ˜æ™¨ä¼Ÿ
  * 
- * ´´½¨ÈÕÆÚ£º2013-5-31
+ * åˆ›å»ºæ—¥æœŸï¼š2013-5-31
  */
 public class AppClient {
 
@@ -21,7 +21,7 @@ public class AppClient {
 	 * @param args
 	 */
 	public static void main(String[] args) {
-		// Á¬½Ó³ØÏà¹Ø¶ÔÏóµÄ³õÊ¼»¯¶¯×÷£¬¶¼ÊÇ°éËæ×ÅÏµÍ³³õÊ¼»¯·¢ÉúµÄ£¬¶ø²»ÊÇµÈµ½Ê¹ÓÃËüµÄÊ±ºòÀÁ¼ÓÔØ
+		// è¿æ¥æ± ç›¸å…³å¯¹è±¡çš„åˆå§‹åŒ–åŠ¨ä½œï¼Œéƒ½æ˜¯ä¼´éšç€ç³»ç»Ÿåˆå§‹åŒ–å‘ç”Ÿçš„ï¼Œè€Œä¸æ˜¯ç­‰åˆ°ä½¿ç”¨å®ƒçš„æ—¶å€™æ‡’åŠ è½½
 		ConnectionPoolManager.getInstance();
 		try {
 			Thread.sleep(5000);
@@ -40,7 +40,7 @@ public class AppClient {
 		} finally {
 			if(con != null) {
 				try {
-					// ¹Ø±ÕÁ¬½Ó£¬Êµ¼ÊÊÇ½«Á¬½Ó¹é»¹¸ø³Ø£¬µ«¿Í»§¶Ë²¢²»ÖªµÀ´ËÊµÏÖÏ¸½Ú
+					// å…³é—­è¿æ¥ï¼Œå®é™…æ˜¯å°†è¿æ¥å½’è¿˜ç»™æ± ï¼Œä½†å®¢æˆ·ç«¯å¹¶ä¸çŸ¥é“æ­¤å®ç°ç»†èŠ‚
 					con.close();
 				} catch (SQLException e) {
 					e.printStackTrace();

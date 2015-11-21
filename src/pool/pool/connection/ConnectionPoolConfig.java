@@ -4,23 +4,23 @@
 package pool.connection;
 
 /**
- * Êı¾İ¿âÁ¬½Ó³ØÅäÖÃĞÅÏ¢
+ * æ•°æ®åº“è¿æ¥æ± é…ç½®ä¿¡æ¯
  * 
- * @author Áõ³¿Î°
+ * @author åˆ˜æ™¨ä¼Ÿ
  * 
- * ´´½¨ÈÕÆÚ£º2013-5-31
+ * åˆ›å»ºæ—¥æœŸï¼š2013-5-31
  */
 public class ConnectionPoolConfig {
 
-	private int initSize = 10;// ³õÊ¼Á¬½ÓÊı
-	private int minSize = initSize;// ×îĞ¡Á¬½ÓÊı
-	private int maxSize = 100;// ×î´óÁ¬½ÓÊı
+	private int initSize = 10;// åˆå§‹è¿æ¥æ•°
+	private int minSize = initSize;// æœ€å°è¿æ¥æ•°
+	private int maxSize = 100;// æœ€å¤§è¿æ¥æ•°
 	
-	private long timeOut = 10 * 60 * 1000;// ³¬Ê±Ê±ÏŞ(10·ÖÖÓ)£¬³¬¹ıÈÏÎªÁ¬½Ó³¬Ê± 
+	private long timeOut = 10 * 60 * 1000;// è¶…æ—¶æ—¶é™(10åˆ†é’Ÿ)ï¼Œè¶…è¿‡è®¤ä¸ºè¿æ¥è¶…æ—¶ 
 
-	private String url;// Êı¾İ¿âurl
-	private String user;// Êı¾İ¿âµÇÂ½ÓÃ»§
-	private String password;// Êı¾İ¿âµÇÂ½ÃÜÂë
+	private String url;// æ•°æ®åº“url
+	private String user;// æ•°æ®åº“ç™»é™†ç”¨æˆ·
+	private String password;// æ•°æ®åº“ç™»é™†å¯†ç 
 	
 	public ConnectionPoolConfig(String url, String user, String password) {
 		this.url = url;

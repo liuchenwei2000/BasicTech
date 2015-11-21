@@ -23,41 +23,41 @@ import java.util.Properties;
 import java.util.concurrent.Executor;
 
 /**
- * �ɻ��浽�ص����ݿ�����
+ * 可缓存到池的数据库连接
  * <p>
- * ʵ�������������ݿ����ӵĴ����࣬��Ҫ��Ϊ����дclose()������
+ * 实际上是真正数据库连接的代理类，主要是为了重写close()方法。
  * 
- * @author ����ΰ
+ * @author 刘晨伟
  * 
- * �������ڣ�2013-5-31
+ * 创建日期：2013-5-31
  */
 public class PoolableConnection implements Connection {
 	
-	private boolean isInUse;// �Ƿ�����ʹ��
+	private boolean isInUse;// 是否正被使用
 	
-	private long lastUsedTime;// ���һ�α�ʹ�õ�ʱ��
+	private long lastUsedTime;// 最后一次被使用的时间
 	
-	private Connection realConnection;// ���������ݿ�����
+	private Connection realConnection;// 真正的数据库连接
 	
 	public PoolableConnection(Connection realConnection) {
 		this.realConnection = realConnection;
 	}
 	
 	/**
-	 * Ҫ�ر�ʵ��close()����������ί�и����������ݿ����Ӷ���
+	 * 要特别实现close()方法而不是委托给真正的数据库连接对象
 	 * <p>
-	 * ���ڿͻ��˳�����ԣ�һ��������close()��������Ӧ������ʹ�����ӣ�
-	 * ���Ǵӱ�����ʵ������������ͻ����ٴ�ʹ�ô����ӣ���Ȼ�ǿ��Եġ�
+	 * 对于客户端程序而言，一旦调用了close()方法，理应不该再使用连接，
+	 * 但是从本方法实现来看，即便客户端再次使用此连接，仍然是可以的。
 	 *
 	 * @see java.sql.Connection#close()
 	 */
 	public void close() throws SQLException {
-		// �����ﲻ�������ر����ݿ����ӣ�����Ļ��޷��ﵽ���ӿ����õ�Ŀ�ġ�
+		// 在这里不能真正关闭数据库连接，否则的话无法达到连接可重用的目的。
 		setInUse(false);
 	}
 	
 	/**
-	 * �����ر����ݿ�����
+	 * 真正关闭数据库连接
 	 */
 	public void realClose() {
 		if (realConnection != null) {

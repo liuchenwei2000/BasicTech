@@ -6,11 +6,11 @@ package more.aop.adv;
 import dp.IFactory;
 
 /**
- * Ê¹ÓÃIFactoryµÄ¿Í»§¶Ë
+ * ä½¿ç”¨IFactoryçš„å®¢æˆ·ç«¯
  * 
- * @author Áõ³¿Î°
+ * @author åˆ˜æ™¨ä¼Ÿ
  * 
- * ´´½¨ÈÕÆÚ£º2014Äê7ÔÂ9ÈÕ
+ * åˆ›å»ºæ—¥æœŸï¼š2014å¹´7æœˆ9æ—¥
  */
 public class FactoryClient {
 

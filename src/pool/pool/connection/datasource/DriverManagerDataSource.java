@@ -13,11 +13,11 @@ import java.util.logging.Logger;
 import javax.sql.DataSource;
 
 /**
- * DriverManagerÊµÏÖµÄÊı¾İÔ´
+ * DriverManagerå®ç°çš„æ•°æ®æº
  * 
- * @author Áõ³¿Î°
+ * @author åˆ˜æ™¨ä¼Ÿ
  * 
- * ´´½¨ÈÕÆÚ£º2013-5-31
+ * åˆ›å»ºæ—¥æœŸï¼š2013-5-31
  */
 public class DriverManagerDataSource implements DataSource {
 	
@@ -37,15 +37,15 @@ public class DriverManagerDataSource implements DataSource {
 	}
 
 	/**
-	 * »ñÈ¡Ò»¸öÊı¾İ¿âÁ¬½Ó
+	 * è·å–ä¸€ä¸ªæ•°æ®åº“è¿æ¥
 	 */
 	public Connection getConnection() throws SQLException {
-		// Ã¿´Î¶¼·µ»ØÒ»¸öĞÂµÄÊı¾İ¿âÁ¬½Ó
+		// æ¯æ¬¡éƒ½è¿”å›ä¸€ä¸ªæ–°çš„æ•°æ®åº“è¿æ¥
 		return DriverManager.getConnection(this.dbUrl, this.user, this.password);
 	}
 	
 	/**
-	 * ÏÂÃæÈ«ÊÇDataSource½Ó¿ÚµÄ·½·¨£¬Ö»ÊµÏÖ±ØĞëµÄ
+	 * ä¸‹é¢å…¨æ˜¯DataSourceæ¥å£çš„æ–¹æ³•ï¼Œåªå®ç°å¿…é¡»çš„
 	 */
 	public Connection getConnection(String username, String password)
 			throws SQLException {

@@ -6,9 +6,9 @@ package pool;
 /**
  * 
  * 
- * @author Áõ³¿Î°
+ * @author åˆ˜æ™¨ä¼Ÿ
  * 
- * ´´½¨ÈÕÆÚ£º2013-5-28
+ * åˆ›å»ºæ—¥æœŸï¼š2013-5-28
  */
 public class Client {
 
@@ -18,7 +18,7 @@ public class Client {
 	 */
 	public static void main(String[] args) throws InterruptedException {
 		try {
-			// ÏµÍ³Æô¶¯µÄÊ±ºò»á³õÊ¼»¯³ØVehiclePool
+			// ç³»ç»Ÿå¯åŠ¨çš„æ—¶å€™ä¼šåˆå§‹åŒ–æ± VehiclePool
 			Class.forName(VehiclePool.class.getName());
 		} catch (ClassNotFoundException e) {
 			e.printStackTrace();
@@ -48,14 +48,14 @@ class Task implements Runnable {
 	public void run() {
 		String threadName = Thread.currentThread().getName();
 		Vehicle vehicle = VehiclePool.getVehicle();
-		System.out.printf("¡¾%s¡¿ I want a vehicle.%n", threadName);
+		System.out.printf("ã€%sã€‘ I want a vehicle.%n", threadName);
 		vehicle.move();
 		try {
 			Thread.sleep(1100);
 		} catch (InterruptedException e) {
 			e.printStackTrace();
 		}
-		System.out.printf("¡¾%s¡¿I give back the vehicle.%n", threadName);
+		System.out.printf("ã€%sã€‘I give back the vehicle.%n", threadName);
 		VehiclePool.giveBack(vehicle);
 	}
 }

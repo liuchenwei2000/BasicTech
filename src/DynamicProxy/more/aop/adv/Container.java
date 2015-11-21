@@ -11,11 +11,11 @@ import dp.IService;
 import dp.ServiceImpl;
 
 /**
- * ÓÃÀ´Ä£ÄâÈİÆ÷
+ * ç”¨æ¥æ¨¡æ‹Ÿå®¹å™¨
  * 
- * @author Áõ³¿Î°
+ * @author åˆ˜æ™¨ä¼Ÿ
  * 
- * ´´½¨ÈÕÆÚ£º2014-7-8
+ * åˆ›å»ºæ—¥æœŸï¼š2014-7-8
  */
 public class Container {
 
@@ -24,9 +24,9 @@ public class Container {
 	 */
 	public static void main(String[] args) {
 		/*
-		 * ³¡¾°1£ºÎªIServiceÒµÎñ¶ÔÏóÌá¹©ÈÕÖ¾¹¦ÄÜºÍ·½·¨Ö´ĞĞÊ±¼äÍ³¼Æ¹¦ÄÜ
+		 * åœºæ™¯1ï¼šä¸ºIServiceä¸šåŠ¡å¯¹è±¡æä¾›æ—¥å¿—åŠŸèƒ½å’Œæ–¹æ³•æ‰§è¡Œæ—¶é—´ç»Ÿè®¡åŠŸèƒ½
 		 */
-		// ĞèÒªÄÄĞ©¹¦ÄÜ¾Í×¢²áÄÄĞ©À¹½ØÆ÷
+		// éœ€è¦å“ªäº›åŠŸèƒ½å°±æ³¨å†Œå“ªäº›æ‹¦æˆªå™¨
 		InvocationHandlerChain chain = new InvocationHandlerChain(new ServiceImpl());
 		chain.register(new LoggingInterceptor());
 		chain.register(new TimeInterceptor());
@@ -35,13 +35,13 @@ public class Container {
 				IService.class.getClassLoader(),
 				new Class[] { IService.class }, chain);
 		
-		// ¿Í»§¶ËÀàServiceClientÍêÈ«²»ĞèÒªÓĞÈÎºÎĞŞ¸Ä
+		// å®¢æˆ·ç«¯ç±»ServiceClientå®Œå…¨ä¸éœ€è¦æœ‰ä»»ä½•ä¿®æ”¹
 		ServiceClient serviceClient = new ServiceClient(serviceProxy);
 		serviceClient.doSomething();
 		System.out.println();
 		
 		/*
-		 * ³¡¾°2£ºÎªIFactoryÒµÎñ¶ÔÏóÌá¹©·½·¨Ö´ĞĞÊ±¼äÍ³¼Æ¹¦ÄÜºÍÈÕÖ¾¹¦ÄÜ
+		 * åœºæ™¯2ï¼šä¸ºIFactoryä¸šåŠ¡å¯¹è±¡æä¾›æ–¹æ³•æ‰§è¡Œæ—¶é—´ç»Ÿè®¡åŠŸèƒ½å’Œæ—¥å¿—åŠŸèƒ½
 		 */
 		chain = new InvocationHandlerChain(new FactoryImpl());
 		chain.register(new TimeInterceptor());
@@ -51,7 +51,7 @@ public class Container {
 				IFactory.class.getClassLoader(),
 				new Class[] { IFactory.class }, chain);
 		
-		// ¿Í»§¶ËÀàFactoryClientÍêÈ«²»ĞèÒªÓĞÈÎºÎĞŞ¸Ä
+		// å®¢æˆ·ç«¯ç±»FactoryClientå®Œå…¨ä¸éœ€è¦æœ‰ä»»ä½•ä¿®æ”¹
 		FactoryClient factoryClient = new FactoryClient(factoryProxy);
 		System.out.println(factoryClient.say());
 	}

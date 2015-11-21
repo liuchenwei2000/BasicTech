@@ -8,11 +8,11 @@ import java.util.Map;
 import java.util.Set;
 
 /**
- * Æû³µ³Ø
+ * æ±½è½¦æ± 
  * 
- * @author Áõ³¿Î°
+ * @author åˆ˜æ™¨ä¼Ÿ
  * 
- * ´´½¨ÈÕÆÚ£º2013-5-28
+ * åˆ›å»ºæ—¥æœŸï¼š2013-5-28
  */
 public class VehiclePool {
 
@@ -31,7 +31,7 @@ public class VehiclePool {
 	}
 
 	/**
-	 * »ñÈ¡ Vehicle ¶ÔÏó
+	 * è·å– Vehicle å¯¹è±¡
 	 */
 	public synchronized static Vehicle getVehicle() {
 		Set<Vehicle> keys = map.keySet();
@@ -45,7 +45,7 @@ public class VehiclePool {
 	}
 
 	/**
-	 * ¹é»¹ Vehicle ¶ÔÏó
+	 * å½’è¿˜ Vehicle å¯¹è±¡
 	 */
 	public synchronized static void giveBack(Vehicle vehicle) {
 		if (vehicle != null) {

@@ -8,11 +8,11 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 /**
- * ÈÕÖ¾À¹½ØÆ÷
+ * æ—¥å¿—æ‹¦æˆªå™¨
  * 
- * @author Áõ³¿Î°
+ * @author åˆ˜æ™¨ä¼Ÿ
  * 
- * ´´½¨ÈÕÆÚ£º2014-7-8
+ * åˆ›å»ºæ—¥æœŸï¼š2014-7-8
  */
 public class LoggingInterceptor implements MethodInterceptor{
 

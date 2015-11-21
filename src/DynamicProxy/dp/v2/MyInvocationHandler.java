@@ -7,19 +7,19 @@ import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.Method;
 
 /**
- * Óë¶¯Ì¬´úÀí¶ÔÓ¦µÄµ÷ÓÃ´¦ÀíÆ÷Ê¾Àı
+ * ä¸åŠ¨æ€ä»£ç†å¯¹åº”çš„è°ƒç”¨å¤„ç†å™¨ç¤ºä¾‹
  * <p>
- * Í¨³£»á°ÑÒ»¸ö¾ßÌåÊµÏÖÀàµÄÊµÀı´«¸øµ÷ÓÃ´¦ÀíÆ÷£¬È»ºó°Ñ¾ßÌåÒµÎñµÄÊµÏÖÎ¯ÅÉ¸øÕâ¸ö¶ÔÏóÈ¥Íê³É¡£
- * InvocationHandlerµÄ¹¤×÷ÊÇÏìÓ¦´úÀíµÄÈÎºÎµ÷ÓÃ£¬¿ÉÒÔ°ÑËüÏë³ÉÊÇ´úÀíÊÕµ½·½·¨µ÷ÓÃºó£¬ÇëÇó×öÊµ¼Ê¹¤×÷µÄ¶ÔÏó¡£
- * Java¸ºÔğ´´½¨ÕæÊµ´úÀíÀàºÍ¶ÔÏó£¬ÎÒÃÇÖ»ĞèÌá¹©ÔÚ·½·¨µ÷ÓÃ·¢ÉúÊ±ÖªµÀ×öÊ²Ã´µÄhandler¡£
+ * é€šå¸¸ä¼šæŠŠä¸€ä¸ªå…·ä½“å®ç°ç±»çš„å®ä¾‹ä¼ ç»™è°ƒç”¨å¤„ç†å™¨ï¼Œç„¶åæŠŠå…·ä½“ä¸šåŠ¡çš„å®ç°å§”æ´¾ç»™è¿™ä¸ªå¯¹è±¡å»å®Œæˆã€‚
+ * InvocationHandlerçš„å·¥ä½œæ˜¯å“åº”ä»£ç†çš„ä»»ä½•è°ƒç”¨ï¼Œå¯ä»¥æŠŠå®ƒæƒ³æˆæ˜¯ä»£ç†æ”¶åˆ°æ–¹æ³•è°ƒç”¨åï¼Œè¯·æ±‚åšå®é™…å·¥ä½œçš„å¯¹è±¡ã€‚
+ * Javaè´Ÿè´£åˆ›å»ºçœŸå®ä»£ç†ç±»å’Œå¯¹è±¡ï¼Œæˆ‘ä»¬åªéœ€æä¾›åœ¨æ–¹æ³•è°ƒç”¨å‘ç”Ÿæ—¶çŸ¥é“åšä»€ä¹ˆçš„handlerã€‚
  * 
- * @author Áõ³¿Î°
+ * @author åˆ˜æ™¨ä¼Ÿ
  * 
- * ´´½¨ÈÕÆÚ£º2014-7-8
+ * åˆ›å»ºæ—¥æœŸï¼š2014-7-8
  */
 public class MyInvocationHandler implements InvocationHandler {
 
-	// ¾ßÌåÊµÏÖÀàÊµÀı
+	// å…·ä½“å®ç°ç±»å®ä¾‹
 	private Object target;
 	
 	public MyInvocationHandler(Object target) {
@@ -27,18 +27,18 @@ public class MyInvocationHandler implements InvocationHandler {
 	}
 
 	/**
-	 * ĞèÒªÊµÏÖÕâ¸ö·½·¨
+	 * éœ€è¦å®ç°è¿™ä¸ªæ–¹æ³•
 	 * 
 	 * @see java.lang.reflect.InvocationHandler#invoke(java.lang.Object, java.lang.reflect.Method, java.lang.Object[])
 	 */
 	public Object invoke(Object proxy, Method method, Object[] args)
 			throws Throwable {
-		// ·½·¨Ö´ĞĞÇ°´¦Àí
+		// æ–¹æ³•æ‰§è¡Œå‰å¤„ç†
 		String methodInfo = target.getClass().getName() + "." + method.getName();
 		System.out.println("enter " + methodInfo);
-		// ·½·¨Ö´ĞĞÎ¯ÍĞ¸ø¾ßÌåÊµÀı
+		// æ–¹æ³•æ‰§è¡Œå§”æ‰˜ç»™å…·ä½“å®ä¾‹
 		Object result = method.invoke(target, args);
-		// ·½·¨Ö´ĞĞºó´¦Àí
+		// æ–¹æ³•æ‰§è¡Œåå¤„ç†
 		System.out.println("leave " + methodInfo);
 		return result;
 	}

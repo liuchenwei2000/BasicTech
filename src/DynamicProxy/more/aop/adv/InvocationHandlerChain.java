@@ -9,20 +9,20 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * À¹½ØÆ÷Á´
+ * æ‹¦æˆªå™¨é“¾
  * <p>
- * °Ñ¶à¸öÀ¹½ØÆ÷´®³ÉÒ»ÌõÁ´£¬ÔÚÒ»¸ö¶¯Ì¬´úÀíµÄInvocationHandlerÖĞÀ¹½ØËùÓĞµÄ·½·¨µ÷ÓÃ£¬¾Í¿ÉÒÔ°¤¸öÖ´ĞĞÁ´ÉÏµÄÀ¹½ØÆ÷¡£
- * ÕâÑùÒ»À´£¬²»¹ÜÓĞ¶àÉÙ»ù´¡ÉèÊ©·şÎñĞèÒªÌá¹©£¬¶¼¿ÉÒÔÓ¦¶Ô×ÔÈç¡£
+ * æŠŠå¤šä¸ªæ‹¦æˆªå™¨ä¸²æˆä¸€æ¡é“¾ï¼Œåœ¨ä¸€ä¸ªåŠ¨æ€ä»£ç†çš„InvocationHandlerä¸­æ‹¦æˆªæ‰€æœ‰çš„æ–¹æ³•è°ƒç”¨ï¼Œå°±å¯ä»¥æŒ¨ä¸ªæ‰§è¡Œé“¾ä¸Šçš„æ‹¦æˆªå™¨ã€‚
+ * è¿™æ ·ä¸€æ¥ï¼Œä¸ç®¡æœ‰å¤šå°‘åŸºç¡€è®¾æ–½æœåŠ¡éœ€è¦æä¾›ï¼Œéƒ½å¯ä»¥åº”å¯¹è‡ªå¦‚ã€‚
  * 
- * @author Áõ³¿Î°
+ * @author åˆ˜æ™¨ä¼Ÿ
  * 
- * ´´½¨ÈÕÆÚ£º2014-7-8
+ * åˆ›å»ºæ—¥æœŸï¼š2014-7-8
  */
 public class InvocationHandlerChain implements InvocationHandler {
 
-	// À¹½ØÆ÷ÁĞ±í
+	// æ‹¦æˆªå™¨åˆ—è¡¨
 	private List<MethodInterceptor> interceptors;
-	// ¾ßÌåÊµÏÖÀàÊµÀı
+	// å…·ä½“å®ç°ç±»å®ä¾‹
 	private Object target;
 	
 	public InvocationHandlerChain(Object target) {
@@ -35,7 +35,7 @@ public class InvocationHandlerChain implements InvocationHandler {
 		for(MethodInterceptor interceptor : interceptors){
 			interceptor.beforeInvoking(target, method, args);
 		}
-		// Ö´ĞĞ·½·¨µ÷ÓÃ
+		// æ‰§è¡Œæ–¹æ³•è°ƒç”¨
 		Object result = method.invoke(target, args);
 		for(MethodInterceptor interceptor : interceptors){
 			interceptor.afterInvoking(target, method, args);
@@ -44,14 +44,14 @@ public class InvocationHandlerChain implements InvocationHandler {
 	}
 	
 	/**
-	 * ×¢²áÀ¹½ØÆ÷
+	 * æ³¨å†Œæ‹¦æˆªå™¨
 	 */
 	public void register(MethodInterceptor interceptor){
 		interceptors.add(interceptor);
 	}
 	
 	/**
-	 * ÒÆ³ıÀ¹½ØÆ÷
+	 * ç§»é™¤æ‹¦æˆªå™¨
 	 */
 	public void remove(MethodInterceptor interceptor){
 		interceptors.remove(interceptor);

@@ -4,11 +4,11 @@
 package demo1;
 
 /**
- * Éú²úÕß
+ * ç”Ÿäº§è€…
  * 
- * @author Áõ³¿Î°
+ * @author åˆ˜æ™¨ä¼Ÿ
  * 
- * ´´½¨ÈÕÆÚ£º2014Äê7ÔÂ30ÈÕ
+ * åˆ›å»ºæ—¥æœŸï¼š2014å¹´7æœˆ30æ—¥
  */
 public class Producer implements Runnable {
 
@@ -19,7 +19,7 @@ public class Producer implements Runnable {
 	}
 
 	public void run() {
-		// ²»Í£µØÉú²úÉÌÆ·
+		// ä¸åœåœ°ç”Ÿäº§å•†å“
 		while (true) {
 			store.offer(new Goods());
 			try {

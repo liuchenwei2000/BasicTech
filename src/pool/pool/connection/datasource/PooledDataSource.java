@@ -20,27 +20,27 @@ import pool.connection.ConnectionPoolConfig;
 import pool.connection.PoolableConnection;
 
 /**
- * Á¬½Ó³ØÊµÏÖµÄDataSource
+ * è¿æ¥æ± å®ç°çš„DataSource
  * <p>
- * Êµ¼ÊÉÏºÍ pool.connection.ConnectionPool ÊÇÒ»ÑùµÄ¡£
+ * å®é™…ä¸Šå’Œ pool.connection.ConnectionPool æ˜¯ä¸€æ ·çš„ã€‚
  * 
- * @author Áõ³¿Î°
+ * @author åˆ˜æ™¨ä¼Ÿ
  * 
- * ´´½¨ÈÕÆÚ£º2013-5-31
+ * åˆ›å»ºæ—¥æœŸï¼š2013-5-31
  */
 public class PooledDataSource implements DataSource {
 	
-	/** ³¤Ê±¼äÃ»Ê¹ÓÃµÄÊ±ÏŞ 3Ğ¡Ê± */
+	/** é•¿æ—¶é—´æ²¡ä½¿ç”¨çš„æ—¶é™ 3å°æ—¶ */
 	private static final long LONG_TIME_NO_USE = 3 * 60 * 60 * 1000;
 	
-	// Ê¹ÓÃLinkedList×öÈİÆ÷£¬ÊÇÒòÎª²åÈëºÍÉ¾³ı²Ù×÷±È½Ï¶à
+	// ä½¿ç”¨LinkedListåšå®¹å™¨ï¼Œæ˜¯å› ä¸ºæ’å…¥å’Œåˆ é™¤æ“ä½œæ¯”è¾ƒå¤š
 	private LinkedList<PoolableConnection> pool;
 	
 	private ConnectionPoolConfig config;
 	
-	// ¶¨Ê±Æ÷£¬ÓÃÓÚ¶¨Ê±ÊÕ¼¯²¢¹Ø±Õ³¤Ê±¼ä²»ÓÃµÄÁ¬½Ó£¬Ìá¸ßÊı¾İ¿âµÄĞÔÄÜ
-	// ±ÈÈçÄ³ÏµÍ³°×ÌìµÄÊ±ºò£¬ĞèÒª²î²»¶àmaxÊıÁ¿µÄÁ¬½ÓÊı£¬µ«µ½ÁËÍíÉÏminÊıÁ¿¾Í×ã¹»ÁË
-	// ÄÇÃ´Ê¹ÓÃ¶¨Ê±Æ÷½øĞĞ¼ì²é£¬»ØÊÕ³¤Ê±¼ä²»ÓÃµÄÁ¬½Ó£¬¿ÉÒÔÊ¹µÃÍíÉÏ³ØÖĞÁ¬½ÓµÄÊıÁ¿½µÏÂÀ´
+	// å®šæ—¶å™¨ï¼Œç”¨äºå®šæ—¶æ”¶é›†å¹¶å…³é—­é•¿æ—¶é—´ä¸ç”¨çš„è¿æ¥ï¼Œæé«˜æ•°æ®åº“çš„æ€§èƒ½
+	// æ¯”å¦‚æŸç³»ç»Ÿç™½å¤©çš„æ—¶å€™ï¼Œéœ€è¦å·®ä¸å¤šmaxæ•°é‡çš„è¿æ¥æ•°ï¼Œä½†åˆ°äº†æ™šä¸Šminæ•°é‡å°±è¶³å¤Ÿäº†
+	// é‚£ä¹ˆä½¿ç”¨å®šæ—¶å™¨è¿›è¡Œæ£€æŸ¥ï¼Œå›æ”¶é•¿æ—¶é—´ä¸ç”¨çš„è¿æ¥ï¼Œå¯ä»¥ä½¿å¾—æ™šä¸Šæ± ä¸­è¿æ¥çš„æ•°é‡é™ä¸‹æ¥
 	private Timer collectTimer;
 	
 	public PooledDataSource(ConnectionPoolConfig config) {
@@ -77,7 +77,7 @@ public class PooledDataSource implements DataSource {
 	}
 
 	/**
-	 * »ñÈ¡Ò»¸öÊı¾İ¿âÁ¬½Ó
+	 * è·å–ä¸€ä¸ªæ•°æ®åº“è¿æ¥
 	 */
 	public synchronized Connection getConnection() throws SQLException {
 		Connection con = findFreeConnection();
@@ -93,7 +93,7 @@ public class PooledDataSource implements DataSource {
 		ListIterator<PoolableConnection> it = pool.listIterator();
 		while (it.hasNext()) {
 			PoolableConnection pc = (PoolableConnection) it.next();
-			if (!pc.isInUse()) {// ¿ÕÏĞ
+			if (!pc.isInUse()) {// ç©ºé—²
 				setInUse(pc);
 				return pc;
 			}
@@ -103,14 +103,14 @@ public class PooledDataSource implements DataSource {
 	
 
 	/**
-	 * Ç¿ÖÆ»ØÊÕ³¬Ê±µÄÁ¬½Ó
+	 * å¼ºåˆ¶å›æ”¶è¶…æ—¶çš„è¿æ¥
 	 * <p>
-	 * Ç¿ÖÆ»ØÊÕÊÇÖ¸¹Ø±ÕÕæÕıµÄÊı¾İ¿âÁ¬½Ó£¬¶ø²»ÊÇ¼òµ¥¸Ä±äÊ¹ÓÃ×´Ì¬¡£
-	 * Ö®ËùÒÔÕâÃ´×ö£¬ÊÇÒòÎªÈô½ö½ö¸Ä±äÊ¹ÓÃ×´Ì¬£¬ÄÇ´ËÁ¬½ÓºÜÓĞ¿ÉÄÜ»á±»ÔÙ´Î·ÖÅäÊ¹ÓÃ£¬
-	 * ¶ø´ËÇ°Ê¹ÓÃ³¬Ê±µÄ¿Í»§¶Ë³ÌĞòÒ²¿ÉÄÜ»á¼ÌĞøÊ¹ÓÃ£¬Ôì³É²¢·¢ÎÊÌâ¡£
+	 * å¼ºåˆ¶å›æ”¶æ˜¯æŒ‡å…³é—­çœŸæ­£çš„æ•°æ®åº“è¿æ¥ï¼Œè€Œä¸æ˜¯ç®€å•æ”¹å˜ä½¿ç”¨çŠ¶æ€ã€‚
+	 * ä¹‹æ‰€ä»¥è¿™ä¹ˆåšï¼Œæ˜¯å› ä¸ºè‹¥ä»…ä»…æ”¹å˜ä½¿ç”¨çŠ¶æ€ï¼Œé‚£æ­¤è¿æ¥å¾ˆæœ‰å¯èƒ½ä¼šè¢«å†æ¬¡åˆ†é…ä½¿ç”¨ï¼Œ
+	 * è€Œæ­¤å‰ä½¿ç”¨è¶…æ—¶çš„å®¢æˆ·ç«¯ç¨‹åºä¹Ÿå¯èƒ½ä¼šç»§ç»­ä½¿ç”¨ï¼Œé€ æˆå¹¶å‘é—®é¢˜ã€‚
 	 */
 	private void recycleTimeoutMandatorily() {
-		// ÁíÆğÒ»¸öÏß³ÌÖ´ĞĞÇ¿ÖÆ»ØÊÕÈÎÎñ
+		// å¦èµ·ä¸€ä¸ªçº¿ç¨‹æ‰§è¡Œå¼ºåˆ¶å›æ”¶ä»»åŠ¡
 		new MandatoryRecycler().start();
 	}
 
@@ -125,7 +125,7 @@ public class PooledDataSource implements DataSource {
 	}
 	
 	/**
-	 * Ç¿ÖÆ»ØÊÕÆ÷
+	 * å¼ºåˆ¶å›æ”¶å™¨
 	 */
 	private class MandatoryRecycler extends Thread{
 		
@@ -133,7 +133,7 @@ public class PooledDataSource implements DataSource {
 			ListIterator<PoolableConnection> it = pool.listIterator();
 			while (it.hasNext()) {
 				PoolableConnection pc = (PoolableConnection) it.next();
-				if (isTimeOut(pc)) {// ³¬Ê±
+				if (isTimeOut(pc)) {// è¶…æ—¶
 					pc.realClose();
 					it.remove();
 				}
@@ -142,12 +142,12 @@ public class PooledDataSource implements DataSource {
 	}
 	
 	/**
-	 * ÊÕ¼¯Æ÷£¬ÓÃÓÚÊÕ¼¯³¤Ê±¼äÎ´Ê¹ÓÃµÄÁ¬½Ó
+	 * æ”¶é›†å™¨ï¼Œç”¨äºæ”¶é›†é•¿æ—¶é—´æœªä½¿ç”¨çš„è¿æ¥
 	 */
 	private class CollectTask extends TimerTask {
 
 		public void run() {
-			// ±£Ö¤³ØÄÚ³ÖÓĞµÄÁ¬½Ó²»ÉÙÓÚ×îĞ¡Öµ
+			// ä¿è¯æ± å†…æŒæœ‰çš„è¿æ¥ä¸å°‘äºæœ€å°å€¼
 			if (pool.size() <= config.getMinSize()) {
 				return;
 			}
@@ -167,7 +167,7 @@ public class PooledDataSource implements DataSource {
 	}
 
 	/**
-	 * ÏÂÃæÈ«ÊÇDataSource½Ó¿ÚµÄ·½·¨£¬Ö»ÊµÏÖ±ØĞëµÄ
+	 * ä¸‹é¢å…¨æ˜¯DataSourceæ¥å£çš„æ–¹æ³•ï¼Œåªå®ç°å¿…é¡»çš„
 	 */
 	
 	

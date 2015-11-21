@@ -4,11 +4,11 @@
 package demo1;
 
 /**
- * Ïû·ÑÕß
+ * æ¶ˆè´¹è€…
  * 
- * @author Áõ³¿Î°
+ * @author åˆ˜æ™¨ä¼Ÿ
  * 
- * ´´½¨ÈÕÆÚ£º2014Äê7ÔÂ30ÈÕ
+ * åˆ›å»ºæ—¥æœŸï¼š2014å¹´7æœˆ30æ—¥
  */
 public class Consumer implements Runnable {
 
@@ -19,7 +19,7 @@ public class Consumer implements Runnable {
 	}
 
 	public void run() {
-		// ²»Í£µØÈ¡ÉÌÆ·
+		// ä¸åœåœ°å–å•†å“
 		while (true) {
 			store.take();
 			try {

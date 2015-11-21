@@ -11,11 +11,11 @@ import java.sql.Statement;
 import javax.sql.DataSource;
 
 /**
- * Ó¦ÓÃ¿Í»§¶Ë³ÌĞò
+ * åº”ç”¨å®¢æˆ·ç«¯ç¨‹åº
  * 
- * @author Áõ³¿Î°
+ * @author åˆ˜æ™¨ä¼Ÿ
  * 
- * ´´½¨ÈÕÆÚ£º2013-5-31
+ * åˆ›å»ºæ—¥æœŸï¼š2013-5-31
  */
 public class AppClient {
 
@@ -23,14 +23,14 @@ public class AppClient {
 	 * @param args
 	 */
 	public static void main(String[] args) {
-		// Á¬½Ó³ØÏà¹Ø¶ÔÏóµÄ³õÊ¼»¯¶¯×÷£¬¶¼ÊÇ°éËæ×ÅÏµÍ³³õÊ¼»¯·¢ÉúµÄ£¬¶ø²»ÊÇµÈµ½Ê¹ÓÃËüµÄÊ±ºòÀÁ¼ÓÔØ
+		// è¿æ¥æ± ç›¸å…³å¯¹è±¡çš„åˆå§‹åŒ–åŠ¨ä½œï¼Œéƒ½æ˜¯ä¼´éšç€ç³»ç»Ÿåˆå§‹åŒ–å‘ç”Ÿçš„ï¼Œè€Œä¸æ˜¯ç­‰åˆ°ä½¿ç”¨å®ƒçš„æ—¶å€™æ‡’åŠ è½½
 		DataSourceManager.getInstance();
 		try {
 			Thread.sleep(5000);
 		} catch (InterruptedException e) {
 			e.printStackTrace();
 		}
-		// Ö±½Ó»ñÈ¡Êı¾İÔ´¶ÔÏó£¬ÓÉËü·µ»ØÊı¾İ¿âÁ¬½Ó
+		// ç›´æ¥è·å–æ•°æ®æºå¯¹è±¡ï¼Œç”±å®ƒè¿”å›æ•°æ®åº“è¿æ¥
 		DataSource ds = DataSourceManager.getInstance().lookup("data source 1");
 		Connection con = null;
 		try {

@@ -4,11 +4,11 @@
 package dp;
 
 /**
- * ½Ó¿Ú2ÊµÏÖÀàÊ¾Àı
+ * æ¥å£2å®ç°ç±»ç¤ºä¾‹
  * 
- * @author Áõ³¿Î°
+ * @author åˆ˜æ™¨ä¼Ÿ
  * 
- * ´´½¨ÈÕÆÚ£º2014-7-8
+ * åˆ›å»ºæ—¥æœŸï¼š2014-7-8
  */
 public class FactoryImpl implements IFactory {
 

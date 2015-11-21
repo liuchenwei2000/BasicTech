@@ -6,11 +6,11 @@ package more.aop.adv;
 import java.lang.reflect.Method;
 
 /**
- * ·½·¨Ö´ÐÐÊ±¼äÍ³¼ÆÀ¹½ØÆ÷
+ * æ–¹æ³•æ‰§è¡Œæ—¶é—´ç»Ÿè®¡æ‹¦æˆªå™¨
  * 
- * @author Áõ³¿Î°
+ * @author åˆ˜æ™¨ä¼Ÿ
  * 
- * ´´½¨ÈÕÆÚ£º2014-7-8
+ * åˆ›å»ºæ—¥æœŸï¼š2014-7-8
  */
 public class TimeInterceptor implements MethodInterceptor{
 	

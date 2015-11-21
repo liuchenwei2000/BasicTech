@@ -10,28 +10,28 @@ import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
 
 /**
- * ÉÌµê
+ * å•†åº—
  * <p>
- * ÓÃÀ´¹ÜÀíÉÌÆ·µÄ¹©»õºÍÈ¡»õ¡£
+ * ç”¨æ¥ç®¡ç†å•†å“çš„ä¾›è´§å’Œå–è´§ã€‚
  * <p>
- * Ïà±È synchronized ·½Ê½£¬Lock ·½Ê½ÄÜ¹»ÍêÈ«½â¾öÉú²úÕßÏû·ÑÕßÎÊÌâ¡£
- * ¼ÈÄÜ±£Ö¤Éú²úÕß²»»áÔÚ´æ»õÂúÊ±¼ÓÈëÊı¾İ£¬ÓÖÄÜ±£Ö¤Ïû·ÑÕß²»»áÔÚ´æ»õ¿ÕÊ±ÏûºÄÊı¾İ¡£
- * ÕâÈ«¶¼ÒòÎª Lock ¶ÔÏó¿ÉÒÔ´´½¨²»Ö¹Ò»¸öÌõ¼ş¶ÔÏó£¬¶ø synchronized Ö»ÓĞÒ»¸ö¡£
+ * ç›¸æ¯” synchronized æ–¹å¼ï¼ŒLock æ–¹å¼èƒ½å¤Ÿå®Œå…¨è§£å†³ç”Ÿäº§è€…æ¶ˆè´¹è€…é—®é¢˜ã€‚
+ * æ—¢èƒ½ä¿è¯ç”Ÿäº§è€…ä¸ä¼šåœ¨å­˜è´§æ»¡æ—¶åŠ å…¥æ•°æ®ï¼Œåˆèƒ½ä¿è¯æ¶ˆè´¹è€…ä¸ä¼šåœ¨å­˜è´§ç©ºæ—¶æ¶ˆè€—æ•°æ®ã€‚
+ * è¿™å…¨éƒ½å› ä¸º Lock å¯¹è±¡å¯ä»¥åˆ›å»ºä¸æ­¢ä¸€ä¸ªæ¡ä»¶å¯¹è±¡ï¼Œè€Œ synchronized åªæœ‰ä¸€ä¸ªã€‚
  * 
- * @author Áõ³¿Î°
+ * @author åˆ˜æ™¨ä¼Ÿ
  * 
- * ´´½¨ÈÕÆÚ£º2014Äê7ÔÂ30ÈÕ
+ * åˆ›å»ºæ—¥æœŸï¼š2014å¹´7æœˆ30æ—¥
  */
 public class Store {
 	
-	/** ×î´ó´æ»õÁ¿ */
+	/** æœ€å¤§å­˜è´§é‡ */
 	private static final int MAX_SIZE = 5;
 
 	private Lock lock = new ReentrantLock();
 	
-	// ´æ»õÂú
+	// å­˜è´§æ»¡
 	private Condition fullCondition = lock.newCondition();
-	// ´æ»õ¿Õ
+	// å­˜è´§ç©º
 	private Condition emptyCondition = lock.newCondition();
 	
 	private List<Goods> goodsList;
@@ -41,18 +41,18 @@ public class Store {
 	}
 	
 	/**
-	 * ´æ»õ
+	 * å­˜è´§
 	 */
 	public void offer(Goods goods) {
 		lock.lock();
 		try {
 			while (MAX_SIZE == goodsList.size()) {
 				System.out.println("Thread " + Thread.currentThread().getName() + " is waiting for offering goods........");
-				fullCondition.await();// ´æ»õÂúÁË£¬Éú²úÕßÏß³ÌĞèÒªµÈ´ı
+				fullCondition.await();// å­˜è´§æ»¡äº†ï¼Œç”Ÿäº§è€…çº¿ç¨‹éœ€è¦ç­‰å¾…
 			}
 			System.out.println("Thread " + Thread.currentThread().getName() + " offers goods " + goods.getId());
 			goodsList.add(goods);
-			emptyCondition.signalAll();// ÓÖÓĞ´æ»õÁË£¬Í¨ÖªµÈ´ıµÄÏû·ÑÕßÏß³Ì
+			emptyCondition.signalAll();// åˆæœ‰å­˜è´§äº†ï¼Œé€šçŸ¥ç­‰å¾…çš„æ¶ˆè´¹è€…çº¿ç¨‹
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
@@ -61,7 +61,7 @@ public class Store {
 	}
 	
 	/**
-	 * È¡»õ
+	 * å–è´§
 	 */
 	public Goods take() {
 		Goods goods = null;
@@ -70,14 +70,14 @@ public class Store {
 			while (goodsList.isEmpty()) {
 				try {
 					System.out.println("Thread " + Thread.currentThread().getName() + " is waiting for taking goods........");
-					emptyCondition.await();// ´æ»õ¿ÕÁË£¬Ïû·ÑÕßÏß³ÌĞèÒªµÈ´ı
+					emptyCondition.await();// å­˜è´§ç©ºäº†ï¼Œæ¶ˆè´¹è€…çº¿ç¨‹éœ€è¦ç­‰å¾…
 				} catch (InterruptedException e) {
 					e.printStackTrace();
 				}
 			}
 			goods = goodsList.remove(0);
 			System.out.println("Thread " + Thread.currentThread().getName() + " takes goods " + goods.getId());
-			fullCondition.signalAll();// ´æ»õÓÖÓĞ±»È¡×ßµÄÁË£¬Í¨ÖªµÈ´ıµÄÉú²úÕßÏß³Ì
+			fullCondition.signalAll();// å­˜è´§åˆæœ‰è¢«å–èµ°çš„äº†ï¼Œé€šçŸ¥ç­‰å¾…çš„ç”Ÿäº§è€…çº¿ç¨‹
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {

@@ -9,17 +9,17 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 /**
- * Ìá¹©ÈÕÖ¾¹¦ÄÜµÄInvocationHandler
+ * æä¾›æ—¥å¿—åŠŸèƒ½çš„InvocationHandler
  * 
- * @author Áõ³¿Î°
+ * @author åˆ˜æ™¨ä¼Ÿ
  * 
- * ´´½¨ÈÕÆÚ£º2014-7-8
+ * åˆ›å»ºæ—¥æœŸï¼š2014-7-8
  */
 public class InvocationLoggingHandler implements InvocationHandler {
 
 	private SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss.SSS");
 	
-	// ¾ßÌåÊµÏÖÀàÊµÀı
+	// å…·ä½“å®ç°ç±»å®ä¾‹
 	private Object target;
 	
 	public InvocationLoggingHandler(Object target) {

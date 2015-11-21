@@ -6,11 +6,11 @@ package more.aop.adv;
 import dp.IService;
 
 /**
- * Ê¹ÓÃIServiceµÄ¿Í»§¶Ë
+ * ä½¿ç”¨IServiceçš„å®¢æˆ·ç«¯
  * 
- * @author Áõ³¿Î°
+ * @author åˆ˜æ™¨ä¼Ÿ
  * 
- * ´´½¨ÈÕÆÚ£º2014Äê7ÔÂ9ÈÕ
+ * åˆ›å»ºæ—¥æœŸï¼š2014å¹´7æœˆ9æ—¥
  */
 public class ServiceClient {
 

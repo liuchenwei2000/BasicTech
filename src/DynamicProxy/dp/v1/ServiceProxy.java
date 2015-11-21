@@ -6,11 +6,11 @@ package dp.v1;
 import dp.IService;
 
 /**
- * IServiceÊµÀıµÄ´úÀíÀà
+ * IServiceå®ä¾‹çš„ä»£ç†ç±»
  * 
- * @author Áõ³¿Î°
+ * @author åˆ˜æ™¨ä¼Ÿ
  * 
- * ´´½¨ÈÕÆÚ£º2014-7-8
+ * åˆ›å»ºæ—¥æœŸï¼š2014-7-8
  */
 public class ServiceProxy implements IService {
 	

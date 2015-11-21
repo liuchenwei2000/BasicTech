@@ -9,13 +9,13 @@ import java.util.PriorityQueue;
 import java.util.Queue;
 
 /**
- * Ê¾Àý
+ * ç¤ºä¾‹
  * <p>
  * 
  * 
- * @author Áõ³¿Î°
+ * @author åˆ˜æ™¨ä¼Ÿ
  * 
- * ´´½¨ÈÕÆÚ£º2014Äê7ÔÂ13ÈÕ
+ * åˆ›å»ºæ—¥æœŸï¼š2014å¹´7æœˆ13æ—¥
  */
 public class FIFOCache<K, V> implements Cache<K, V> {
 

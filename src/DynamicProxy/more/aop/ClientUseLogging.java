@@ -11,11 +11,11 @@ import dp.IService;
 import dp.ServiceImpl;
 
 /**
- * ÈÕÖ¾Ã¿Ò»¸öÒµÎñ¶ÔÏóµÄ·½·¨µ÷ÓÃ
+ * æ—¥å¿—æ¯ä¸€ä¸ªä¸šåŠ¡å¯¹è±¡çš„æ–¹æ³•è°ƒç”¨
  * 
- * @author Áõ³¿Î°
+ * @author åˆ˜æ™¨ä¼Ÿ
  * 
- * ´´½¨ÈÕÆÚ£º2014-7-8
+ * åˆ›å»ºæ—¥æœŸï¼š2014-7-8
  */
 public class ClientUseLogging {
 
@@ -24,7 +24,7 @@ public class ClientUseLogging {
 	 */
 	public static void main(String[] args) {
 		/*
-		 * ÏÂÃæµÄ¶ÔÏó×°Åä¹ı³Ì£¬Êµ¼ÊÉÏ¿ÉÒÔÍ¨¹ıÒÀÀµ×¢ÈëÓÉÈİÆ÷À´Íê³É 
+		 * ä¸‹é¢çš„å¯¹è±¡è£…é…è¿‡ç¨‹ï¼Œå®é™…ä¸Šå¯ä»¥é€šè¿‡ä¾èµ–æ³¨å…¥ç”±å®¹å™¨æ¥å®Œæˆ 
 		 */
 		IService serviceProxy = (IService) Proxy.newProxyInstance(
 				IService.class.getClassLoader(),

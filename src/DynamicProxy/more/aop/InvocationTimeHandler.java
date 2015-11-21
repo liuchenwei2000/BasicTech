@@ -7,15 +7,15 @@ import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.Method;
 
 /**
- * Ìá¹©Ö´ĞĞÊ±¼äÍ³¼Æ¹¦ÄÜµÄInvocationHandler
+ * æä¾›æ‰§è¡Œæ—¶é—´ç»Ÿè®¡åŠŸèƒ½çš„InvocationHandler
  * 
- * @author Áõ³¿Î°
+ * @author åˆ˜æ™¨ä¼Ÿ
  * 
- * ´´½¨ÈÕÆÚ£º2014-7-8
+ * åˆ›å»ºæ—¥æœŸï¼š2014-7-8
  */
 public class InvocationTimeHandler implements InvocationHandler {
 
-	// ¾ßÌåÊµÏÖÀàÊµÀı
+	// å…·ä½“å®ç°ç±»å®ä¾‹
 	private Object target;
 	
 	public InvocationTimeHandler(Object target) {

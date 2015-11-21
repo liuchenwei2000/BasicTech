@@ -7,17 +7,17 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * ÉÌµê
+ * å•†åº—
  * <p>
- * ÓÃÀ´¹ÜÀíÉÌÆ·µÄ¹©»õºÍÈ¡»õ¡£
+ * ç”¨æ¥ç®¡ç†å•†å“çš„ä¾›è´§å’Œå–è´§ã€‚
  * <p>
- * ÒòÎª synchronized ·½Ê½Ö»ÄÜÌá¹©Ò»¸öÌõ¼ş¶ÔÏó£¬ËùÒÔÎŞ·¨ÍêÈ«½â¾öÉú²úÕßÏû·ÑÕßÎÊÌâ¡£
- * ÒªÃ´Ö»ÄÜ±£Ö¤Éú²úÕß²»»áÔÚ´æ»õÂúÊ±¼ÓÈëÊı¾İ£¬ÒªÃ´Ö»ÄÜÏû·ÑÕß±£Ö¤²»»áÔÚ´æ»õ¿ÕÊ±ÏûºÄÊı¾İ¡£
- * ±¾ÀıÊµÏÖÁËºóÕß¡£
+ * å› ä¸º synchronized æ–¹å¼åªèƒ½æä¾›ä¸€ä¸ªæ¡ä»¶å¯¹è±¡ï¼Œæ‰€ä»¥æ— æ³•å®Œå…¨è§£å†³ç”Ÿäº§è€…æ¶ˆè´¹è€…é—®é¢˜ã€‚
+ * è¦ä¹ˆåªèƒ½ä¿è¯ç”Ÿäº§è€…ä¸ä¼šåœ¨å­˜è´§æ»¡æ—¶åŠ å…¥æ•°æ®ï¼Œè¦ä¹ˆåªèƒ½æ¶ˆè´¹è€…ä¿è¯ä¸ä¼šåœ¨å­˜è´§ç©ºæ—¶æ¶ˆè€—æ•°æ®ã€‚
+ * æœ¬ä¾‹å®ç°äº†åè€…ã€‚
  * 
- * @author Áõ³¿Î°
+ * @author åˆ˜æ™¨ä¼Ÿ
  * 
- * ´´½¨ÈÕÆÚ£º2014Äê7ÔÂ30ÈÕ
+ * åˆ›å»ºæ—¥æœŸï¼š2014å¹´7æœˆ30æ—¥
  */
 public class Store {
 
@@ -28,22 +28,22 @@ public class Store {
 	}
 	
 	/**
-	 * ¹©»õ
+	 * ä¾›è´§
 	 */
 	public synchronized void offer(Goods goods){
 		System.out.println("Thread " + Thread.currentThread().getName() + " offers goods " + goods.getId());
 		goodsList.add(goods);
-		notifyAll();// ¹©»õºóÍ¨ÖªµÈ´ıµÄÈ¡»õÏß³Ì
+		notifyAll();// ä¾›è´§åé€šçŸ¥ç­‰å¾…çš„å–è´§çº¿ç¨‹
 	}
 	
 	/**
-	 * È¡»õ
+	 * å–è´§
 	 */
     public synchronized Goods take() {
     	while(goodsList.isEmpty()){
     		try {
     			System.out.println("Thread " + Thread.currentThread().getName() + " is waiting for taking goods........");
-				wait();// ÎŞ»õµÄÊ±ºò£¬µÈ´ı¹©»õ
+				wait();// æ— è´§çš„æ—¶å€™ï¼Œç­‰å¾…ä¾›è´§
 			} catch (InterruptedException e) {
 				e.printStackTrace();
 			}

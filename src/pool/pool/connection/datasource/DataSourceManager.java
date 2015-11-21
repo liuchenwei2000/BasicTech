@@ -11,22 +11,22 @@ import javax.sql.DataSource;
 import pool.connection.ConnectionPoolConfig;
 
 /**
- * Êı¾İÔ´¹ÜÀíÆ÷
+ * æ•°æ®æºç®¡ç†å™¨
  * <p>
- * Ö÷ÒªÓ¦ÓÃÔÚÏµÍ³Ê¹ÓÃ¶àÊı¾İ¿âµÄ³¡¾°ÏÂ£¬¹ÜÀí¸÷¸öÊı¾İÔ´¡£
+ * ä¸»è¦åº”ç”¨åœ¨ç³»ç»Ÿä½¿ç”¨å¤šæ•°æ®åº“çš„åœºæ™¯ä¸‹ï¼Œç®¡ç†å„ä¸ªæ•°æ®æºã€‚
  * <p>
- * ±¾Àà¶ÔÏóÒ»°ã¶¼ÊÇµ¥Àı£¬ÔËĞĞÔÚJavaEEÓ¦ÓÃ·şÎñÆ÷ÖĞ£¬Í³Ò»¹ÜÀíÊı¾İÔ´¡£
+ * æœ¬ç±»å¯¹è±¡ä¸€èˆ¬éƒ½æ˜¯å•ä¾‹ï¼Œè¿è¡Œåœ¨JavaEEåº”ç”¨æœåŠ¡å™¨ä¸­ï¼Œç»Ÿä¸€ç®¡ç†æ•°æ®æºã€‚
  * 
- * @author Áõ³¿Î°
+ * @author åˆ˜æ™¨ä¼Ÿ
  * 
- * ´´½¨ÈÕÆÚ£º2013-5-31
+ * åˆ›å»ºæ—¥æœŸï¼š2013-5-31
  */
 public class DataSourceManager {
 
-	// µ¥Àı
+	// å•ä¾‹
 	private static final DataSourceManager INSTANCE = new DataSourceManager();
 
-	// Êı¾İÔ´Ãû³Æ_Êı¾İÔ´_Map
+	// æ•°æ®æºåç§°_æ•°æ®æº_Map
 	private Map<String, DataSource> name_ds_map;
 
 	private DataSourceManager() {
@@ -39,12 +39,12 @@ public class DataSourceManager {
 	}
 
 	private void initJNDI() {
-		// Í¨¹ıJNDI·şÎñ×¢²áÊı¾İÔ´
+		// é€šè¿‡JNDIæœåŠ¡æ³¨å†Œæ•°æ®æº
 	}
 
 	private void initMap() {
 		name_ds_map = new HashMap<String, DataSource>();
-		// ÒÔÏÂĞÅÏ¢¶¼¿ÉÒÔÍ¨¹ıÅäÖÃÎÄ¼ş½øĞĞÅäÖÃ£¬±¾ÀıÅäÖÃÁ½¸öÊı¾İÔ´
+		// ä»¥ä¸‹ä¿¡æ¯éƒ½å¯ä»¥é€šè¿‡é…ç½®æ–‡ä»¶è¿›è¡Œé…ç½®ï¼Œæœ¬ä¾‹é…ç½®ä¸¤ä¸ªæ•°æ®æº
 		name_ds_map.put("data source 1", new PooledDataSource(
 				new ConnectionPoolConfig("jdbc:mysql://localhost:3306/db1",
 						"user1", "password1")));
@@ -57,10 +57,10 @@ public class DataSourceManager {
 	}
 
 	/**
-	 * ·µ»ØÖ¸¶¨Êı¾İÔ´¶ÔÏó
+	 * è¿”å›æŒ‡å®šæ•°æ®æºå¯¹è±¡
 	 * 
 	 * @param dataSource
-	 *            Êı¾İÔ´Ãû³Æ
+	 *            æ•°æ®æºåç§°
 	 */
 	public DataSource lookup(String datasourceName){
 		DataSource dataSource = name_ds_map.get(datasourceName);

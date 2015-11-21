@@ -9,11 +9,11 @@ import com.fasterxml.uuid.Generators;
 import com.fasterxml.uuid.impl.RandomBasedGenerator;
 
 /**
- * UUIDÉú³ÉÊ¾Àı
+ * UUIDç”Ÿæˆç¤ºä¾‹
  * 
- * @author Áõ³¿Î°
+ * @author åˆ˜æ™¨ä¼Ÿ
  * 
- * ´´½¨ÈÕÆÚ£º2014Äê7ÔÂ28ÈÕ
+ * åˆ›å»ºæ—¥æœŸï¼š2014å¹´7æœˆ28æ—¥
  */
 public class UUIDTest {
 
@@ -26,18 +26,18 @@ public class UUIDTest {
 	}
 	
 	/**
-	 * Ê¹ÓÃJDKÄÚÖÃµÄUUIDÀàÉú³É
+	 * ä½¿ç”¨JDKå†…ç½®çš„UUIDç±»ç”Ÿæˆ
 	 */
 	private static void generateByJDK() {
-		// »ñÈ¡ Type4 UUID µÄ¾²Ì¬¹¤³§£ºÊ¹ÓÃ¼ÓÃÜµÄÇ¿Î±Ëæ»úÊıÉú³ÉÆ÷Éú³É¸Ã UUID
-		String uuid = UUID.randomUUID().toString();// ¿ÉÓÃÀ´Éú³ÉÊı¾İ¿âµÄÖ÷¼ü
+		// è·å– Type4 UUID çš„é™æ€å·¥å‚ï¼šä½¿ç”¨åŠ å¯†çš„å¼ºä¼ªéšæœºæ•°ç”Ÿæˆå™¨ç”Ÿæˆè¯¥ UUID
+		String uuid = UUID.randomUUID().toString();// å¯ç”¨æ¥ç”Ÿæˆæ•°æ®åº“çš„ä¸»é”®
 		printUUID(uuid);
 	}
 	
 	/**
-	 * Ê¹ÓÃJava UUID Generator(JCG)¿ò¼ÜÉú³É
+	 * ä½¿ç”¨Java UUID Generator(JCG)æ¡†æ¶ç”Ÿæˆ
 	 * <p>
-	 * ´¿JavaÊµÏÖ£¬¿ªÔ´LGPLĞ­Òé£¬²ÉÓÃÁËNativeµÄ·½Ê½²úÉúÕæÕıµÄUUID£¬¶øÇÒÌá¹©ÁË²»Í¬Æ½Ì¨µÄÊµÏÖ¡£
+	 * çº¯Javaå®ç°ï¼Œå¼€æºLGPLåè®®ï¼Œé‡‡ç”¨äº†Nativeçš„æ–¹å¼äº§ç”ŸçœŸæ­£çš„UUIDï¼Œè€Œä¸”æä¾›äº†ä¸åŒå¹³å°çš„å®ç°ã€‚
 	 */
 	private static void generateByJUG() {
 		RandomBasedGenerator generator = Generators.randomBasedGenerator();

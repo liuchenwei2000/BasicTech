@@ -11,11 +11,11 @@ import dp.IService;
 import dp.ServiceImpl;
 
 /**
- * ¶¯Ì¬´úÀí¿Í»§¶ËÊ¹ÓÃÊ¾Àý
+ * åŠ¨æ€ä»£ç†å®¢æˆ·ç«¯ä½¿ç”¨ç¤ºä¾‹
  * 
- * @author Áõ³¿Î°
+ * @author åˆ˜æ™¨ä¼Ÿ
  * 
- * ´´½¨ÈÕÆÚ£º2014-7-8
+ * åˆ›å»ºæ—¥æœŸï¼š2014-7-8
  */
 public class Client {
 
@@ -24,22 +24,22 @@ public class Client {
 	 */
 	public static void main(String[] args) {
 		/*
-		 * Proxy ÀàÌá¹©ÓÃÓÚ´´½¨¶¯Ì¬´úÀíÀàºÍÊµÀýµÄ¾²Ì¬·½·¨¡£
+		 * Proxy ç±»æä¾›ç”¨äºŽåˆ›å»ºåŠ¨æ€ä»£ç†ç±»å’Œå®žä¾‹çš„é™æ€æ–¹æ³•ã€‚
 		 * <p>
-		 * ¶¯Ì¬´úÀíÀàÊÇÔËÐÐÊ±´´½¨µÄÀà£¬µ±Ëü±»´´½¨µÄÊ±ºò»áÊµÏÖÖ¸¶¨µÄ½Ó¿Ú¡£
-		 * Proxy±¾ÉíÊÇÀûÓÃ¾²Ì¬µÄProxy.newProxyInstance()·½·¨ÔÚÔËÐÐÊ±¶¯Ì¬µØ´´½¨µÄ¡£
+		 * åŠ¨æ€ä»£ç†ç±»æ˜¯è¿è¡Œæ—¶åˆ›å»ºçš„ç±»ï¼Œå½“å®ƒè¢«åˆ›å»ºçš„æ—¶å€™ä¼šå®žçŽ°æŒ‡å®šçš„æŽ¥å£ã€‚
+		 * Proxyæœ¬èº«æ˜¯åˆ©ç”¨é™æ€çš„Proxy.newProxyInstance()æ–¹æ³•åœ¨è¿è¡Œæ—¶åŠ¨æ€åœ°åˆ›å»ºçš„ã€‚
 		 * <p>
-		 * newProxyInstance ·½·¨·µ»ØÒ»¸öÖ¸¶¨½Ó¿ÚµÄ´úÀíÀàÊµÀý£¬¸Ã½Ó¿Ú¿ÉÒÔ½«·½·¨µ÷ÓÃÖ¸ÅÉµ½Ö¸¶¨µÄµ÷ÓÃ´¦Àí³ÌÐò(InvocationHandler)¡£
-		 * µÚ¶þ¸ö²ÎÊý¿ÉÒÔÊÇÈÎºÎ½Ó¿Ú£¬µÚÈý¸ö²ÎÊý MyInvocationHandle ¿ÉÒÔ½ÓÊÕÈÎºÎ½Ó¿ÚµÄÊµÀý¡£
+		 * newProxyInstance æ–¹æ³•è¿”å›žä¸€ä¸ªæŒ‡å®šæŽ¥å£çš„ä»£ç†ç±»å®žä¾‹ï¼Œè¯¥æŽ¥å£å¯ä»¥å°†æ–¹æ³•è°ƒç”¨æŒ‡æ´¾åˆ°æŒ‡å®šçš„è°ƒç”¨å¤„ç†ç¨‹åº(InvocationHandler)ã€‚
+		 * ç¬¬äºŒä¸ªå‚æ•°å¯ä»¥æ˜¯ä»»ä½•æŽ¥å£ï¼Œç¬¬ä¸‰ä¸ªå‚æ•° MyInvocationHandle å¯ä»¥æŽ¥æ”¶ä»»ä½•æŽ¥å£çš„å®žä¾‹ã€‚
 		 */
-		// ÕâÀïÀûÓÃ Proxy ºÍ MyInvocationHandler ´´½¨ÁËÊµÏÖ IService ½Ó¿ÚµÄ´úÀíÀàÊµÀý
+		// è¿™é‡Œåˆ©ç”¨ Proxy å’Œ MyInvocationHandler åˆ›å»ºäº†å®žçŽ° IService æŽ¥å£çš„ä»£ç†ç±»å®žä¾‹
 		IService serviceProxy = (IService) Proxy.newProxyInstance(
 				IService.class.getClassLoader(),
 				new Class[] { IService.class }, new MyInvocationHandler(new ServiceImpl()));
 		serviceProxy.operate("Hello");
 		System.out.println();
 		
-		// Ò²¿ÉÒÔ½«´´½¨´úÀí¶ÔÏóµÄ¹ý³Ì·â×°ÆðÀ´£¬ÆäÊµÏÖÔ­ÀíºÍÉÏÃæÊÇÒ»ÑùµÄ¡£
+		// ä¹Ÿå¯ä»¥å°†åˆ›å»ºä»£ç†å¯¹è±¡çš„è¿‡ç¨‹å°è£…èµ·æ¥ï¼Œå…¶å®žçŽ°åŽŸç†å’Œä¸Šé¢æ˜¯ä¸€æ ·çš„ã€‚
 		IFactory factoryProxy = getProxy(new FactoryImpl());
 		System.out.println(factoryProxy.create());
 	}
