@@ -9,8 +9,6 @@
     <modules>
         <module>DynamicProxy</module>
         <module>pool</module>
-        <module>ProducerConsumerModel</module>
-        <module>UUID</module>
     </modules>
 
     <build>
